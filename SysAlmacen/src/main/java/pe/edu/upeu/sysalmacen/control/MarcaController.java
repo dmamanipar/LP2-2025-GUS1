@@ -17,7 +17,7 @@ public class MarcaController {
 
     @GetMapping
     public List<Marca> listar() {
-        marcaService.save(new Marca(1, "Adidas"));
+        //marcaService.save(new Marca(1, "Adidas"));
         return marcaService.findAll();
     }
 

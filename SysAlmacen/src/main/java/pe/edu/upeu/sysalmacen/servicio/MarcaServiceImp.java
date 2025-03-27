@@ -19,7 +19,7 @@ public class MarcaServiceImp implements MarcaService{
     }
 
     @Override
-    public Marca findById(long id) {
+    public Marca findById(Integer id) {
         return marcaRepository.findById(id).get();
     }
 
