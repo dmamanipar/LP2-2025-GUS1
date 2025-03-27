@@ -4,5 +4,5 @@ import pe.edu.upeu.sysalmacen.modelo.Marca;
 
 public interface MarcaServiceISNI {
 
-    public Marca guardarMarca(Marca marca);
+    Marca guardarMarca(Marca marca);
 }
