@@ -32,4 +32,15 @@ public class MarcaServiceImp implements MarcaService{
     public void delete(Marca marca) {
         marcaRepository.delete(marca);
     }
+
+    @Override
+    public Marca update(Marca marca, Integer id) {
+        marca.setIdMarca(id);
+        return marcaRepository.save(marca);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        marcaRepository.deleteById(id);
+    }
 }

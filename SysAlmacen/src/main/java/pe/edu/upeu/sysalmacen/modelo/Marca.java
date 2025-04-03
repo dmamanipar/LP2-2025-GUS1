@@ -1,14 +1,16 @@
 package pe.edu.upeu.sysalmacen.modelo;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "upeu_marca")
 public class Marca {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer idMarca;
@@ -16,21 +18,11 @@ public class Marca {
     @Column(nullable = false)
     public String nombre;
 
-
-
-    public Marca(int idMarca, String nombre) {
-        this.idMarca = idMarca;
-        this.nombre = nombre;
-    }
-
-    public Marca() {
-    }
-
-    public int getIdMarca() {
+    public Integer getIdMarca() {
         return idMarca;
     }
 
-    public void setIdMarca(int idMarca) {
+    public void setIdMarca(Integer idMarca) {
         this.idMarca = idMarca;
     }
 

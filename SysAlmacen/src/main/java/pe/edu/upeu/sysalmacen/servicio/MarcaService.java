@@ -10,5 +10,8 @@ public interface MarcaService {
     public Marca save(Marca marca);
     public void delete(Marca marca);
 
+    public Marca update(Marca marca, Integer id);
+    public void delete(Integer id);
+
 
 }

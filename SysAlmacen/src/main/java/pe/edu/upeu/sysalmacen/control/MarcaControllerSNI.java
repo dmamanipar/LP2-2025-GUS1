@@ -17,8 +17,9 @@ public class MarcaControllerSNI {
 
     @GetMapping
     public Marca getMarcas() {
-        Marca dd= new Marca(1, "sdsd");
-        return repository.guardarMarca(dd);
+        //Marca dd= new Marca(1, "sdsd");
+       // return repository.guardarMarca(dd);
+        return null;
     }
 
 
