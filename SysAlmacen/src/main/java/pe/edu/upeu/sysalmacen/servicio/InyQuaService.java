@@ -1,0 +1,20 @@
+package pe.edu.upeu.sysalmacen.servicio;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import pe.edu.upeu.sysalmacen.modelo.Marca;
+import pe.edu.upeu.sysalmacen.repositorio.MyRepository;
+
+@Service
+public class InyQuaService {
+    private final MyRepository repository;
+
+    public InyQuaService(@Qualifier("mySpecialRepository") MyRepository repository){
+        this.repository=repository;
+    }
+    public Marca guardarEntidad(Marca m){
+        return repository.guardar(m);
+    }
+
+
+}

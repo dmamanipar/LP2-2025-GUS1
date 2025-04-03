@@ -16,7 +16,11 @@ public class MarcaController {
     @Autowired
     private MarcaService marcaService;
 
-
+    @GetMapping("/xsxs")
+    public ResponseEntity<List<Marca>> findAll2() {
+        List<Marca> list = marcaService.findAll();
+        return ResponseEntity.ok(list);
+    }
 
     @GetMapping
     public ResponseEntity<List<Marca>> findAll() {
