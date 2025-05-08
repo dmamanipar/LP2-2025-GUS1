@@ -1,9 +1,15 @@
 package pe.edu.upeu.sysalmacen.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import pe.edu.upeu.sysalmacen.dtos.MarcaDTO;
+import pe.edu.upeu.sysalmacen.mappers.MarcaMapper;
+import pe.edu.upeu.sysalmacen.mappers.ProductoMapper;
 import pe.edu.upeu.sysalmacen.model.Marca;
 import pe.edu.upeu.sysalmacen.service.IMarcaService;
 
@@ -14,7 +20,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/marcas")
 public class MarcaController {
+    private Logger logger= LogManager.getLogger(MarcaController.class);
     private final IMarcaService service;
+    private final MarcaMapper marcaMapper;
     @GetMapping
     public ResponseEntity<List<Marca>> findAll() {
         List<Marca> list = service.findAll();
@@ -26,8 +34,9 @@ public class MarcaController {
         return ResponseEntity.ok(obj);
     }
     @PostMapping
-    public ResponseEntity<Void> save(@RequestBody Marca dto) {
-        Marca obj = service.save(dto);
+    public ResponseEntity<Void> save(@RequestBody @Valid MarcaDTO dto) {
+        Marca obj = service.save(marcaMapper.toEntity(dto));
+        logger.info("Creando una marca");
         URI location =
                 ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                         .buildAndExpand(obj.getIdMarca()).toUri();
