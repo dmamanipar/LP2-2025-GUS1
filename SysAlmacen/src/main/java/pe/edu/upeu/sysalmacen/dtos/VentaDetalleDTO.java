@@ -14,8 +14,10 @@ public class VentaDetalleDTO {
     private Double cantidad;
     private Double descuento;
     private Double subtotal;
+
     @JsonIgnoreProperties({"ventaDetalles"})
     private VentaDTO venta;
+
     private ProductoDTO producto;
 
 
