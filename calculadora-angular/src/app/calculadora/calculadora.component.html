@@ -29,7 +29,7 @@
   <p>Num1:{{num1}}  {{oper}}  Num2:{{num2}}  Resultado:  {{result}}</p>
 }
 -->
-
+<!--
 <div id="calculadora">
   <div class="pantalla">
     <input  type="text" [(ngModel)]="pantalla"  disabled >
@@ -57,5 +57,22 @@
 
     <button (click)="precionarBoton('AC')" class="clear" >AC</button>
   </div>
+</div>
+-->
 
+<div id="calculadora">
+  <div class="pantalla">
+    <input  type="text" [(ngModel)]="pantalla"  disabled >
+  </div>
+  <div class="botones">
+
+    <button
+      *ngFor="let boton of bottons"
+      (click)="precionarBoton(boton)"
+     [ngClass]="{'clear':boton==='AC'}"
+     >
+    {{ boton }}
+    </button>
+
+  </div>
 </div>

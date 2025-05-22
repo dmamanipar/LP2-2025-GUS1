@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import {evaluate} from 'mathjs';
 import {FormsModule} from '@angular/forms';
+import {NgClass, NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-calculadora',
   standalone:true,
   imports: [
-    FormsModule
+    FormsModule,
+    NgForOf,
+    NgClass
   ],
   /*template: `
     <p>calculadora works DMO!</p>
@@ -40,8 +43,32 @@ export class CalculadoraComponent {
 
   pantalla: string="";
 
-  precionarBoton(valor: string){
+  bottons:string[]=[
+    '7', '8', '9', '/',
+    '4', '5', '6', '*',
+    '1', '2', '3', '+',
+    '0', '.', '=', '-',
+    'AC'
+  ];
 
+  precionarBoton(valor: string){
+    if(valor === "AC"){
+      this.pantalla="";
+
+    }else if(valor === "="){
+      this.calcular();
+    }else{
+      this.pantalla+=valor;
+    }
+  }
+
+  calcular(){
+    try {
+      var valor = this.pantalla;
+      this.pantalla=evaluate(valor);
+    }catch (e) {
+      this.pantalla="Error";
+    }
   }
 
 }
