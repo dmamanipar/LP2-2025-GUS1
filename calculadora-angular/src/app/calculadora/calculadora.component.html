@@ -4,3 +4,8 @@
 
 <p>Num2:</p>
 <input type="number" (keyup)="getNum2($event)" >
+<input type="button" value="Sumar" (click)="operar('+')" >
+<input type="button" value="Resta" (click)="operar('-')" >
+<input type="button" value="Multiplicar" (click)="operar('*')" >
+<input type="button" value="Dividir" (click)="operar('/')" >
+<p>Num1:{{num1}}  {{oper}}  Num2:{{num2}}  Resultado:  {{result}}</p>
