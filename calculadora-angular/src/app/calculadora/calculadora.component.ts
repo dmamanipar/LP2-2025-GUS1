@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import {evaluate} from 'mathjs';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-calculadora',
   standalone:true,
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   /*template: `
     <p>calculadora works DMO!</p>
     `,*/
@@ -12,10 +15,12 @@ import {evaluate} from 'mathjs';
   styleUrl: './calculadora.component.css'
 })
 export class CalculadoraComponent {
+  /*
   num1:number=0;
   num2:number=0;
   result:String="";
   oper:string=""
+  visible:boolean=false;
 
   getNum1(e:any){
     this.num1=e.target.value;
@@ -29,7 +34,14 @@ export class CalculadoraComponent {
 
   operar(oper:string){
     this.oper=oper;
+    this.visible=true;
     this.result=evaluate(this.num1+this.oper+this.num2);
+  }*/
+
+  pantalla: string="";
+
+  precionarBoton(valor: string){
+
   }
 
 }
