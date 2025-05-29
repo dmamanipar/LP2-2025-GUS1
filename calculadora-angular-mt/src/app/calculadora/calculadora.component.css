@@ -1,0 +1,34 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+mat-toolbar button.mat-icon-button {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none;
+}
+.botones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button.clear {
+  grid-column: span 4;
+  background-color: #ff6961;
+}
+
+button.clear:hover {
+  background-color: #ff5c5c;
+}
+
+
+
+.pantalla input {
+  grid-column: span 4;
+  width: 99%;
+  height: 40px;
+  text-align: right;
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 5px;
+}

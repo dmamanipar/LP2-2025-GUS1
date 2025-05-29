@@ -1,0 +1,94 @@
+<mat-toolbar>
+  <button matIconButton class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button matIconButton class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button matIconButton class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+
+
+<!--
+
+<p>Num1:</p>
+<input type="number" (keyup)="getNum1($event)" >
+
+<p>Num2:</p>
+<input type="number" (keyup)="getNum2($event)" >
+<input type="button" value="Sumar" (click)="operar('+')" >
+<input type="button" value="Resta" (click)="operar('-')" >
+<input type="button" value="Multiplicar" (click)="operar('*')" >
+<input type="button" value="Dividir" (click)="operar('/')" >
+@if (visible) {
+  <p>Num1:{{num1}}  {{oper}}  Num2:{{num2}}  Resultado:  {{result}}</p>
+}
+
+-->
+<!--
+<p>Num1:</p>
+<input type="number" [(ngModel)]="num1"  >
+<p>Num2:</p>
+<input type="number" [(ngModel)]="num2"  >
+
+<input type="button" value="Sumar" (click)="operar('+')" >
+<input type="button" value="Resta" (click)="operar('-')" >
+<input type="button" value="Multiplicar" (click)="operar('*')" >
+<input type="button" value="Dividir" (click)="operar('/')" >
+@if (visible) {
+  <p>Num1:{{num1}}  {{oper}}  Num2:{{num2}}  Resultado:  {{result}}</p>
+}
+-->
+<!--
+<div id="calculadora">
+  <div class="pantalla">
+    <input  type="text" [(ngModel)]="pantalla"  disabled >
+  </div>
+  <div class="botones">
+    <button (click)="precionarBoton('7')" >7</button>
+    <button (click)="precionarBoton('8')" >8</button>
+    <button (click)="precionarBoton('9')" >9</button>
+    <button (click)="precionarBoton('/')" >/</button>
+
+    <button (click)="precionarBoton('4')" >4</button>
+    <button (click)="precionarBoton('5')" >5</button>
+    <button (click)="precionarBoton('6')" >6</button>
+    <button (click)="precionarBoton('*')" >*</button>
+
+    <button (click)="precionarBoton('1')" >1</button>
+    <button (click)="precionarBoton('2')" >2</button>
+    <button (click)="precionarBoton('3')" >3</button>
+    <button (click)="precionarBoton('+')" >+</button>
+
+    <button (click)="precionarBoton('0')" >0</button>
+    <button (click)="precionarBoton('=')" >=</button>
+    <button (click)="precionarBoton('.')" >.</button>
+    <button (click)="precionarBoton('-')" >-</button>
+
+    <button (click)="precionarBoton('AC')" class="clear" >AC</button>
+  </div>
+</div>
+-->
+
+<div id="calculadora">
+  <div class="pantalla">
+    <input  type="text" [(ngModel)]="pantalla"  disabled >
+  </div>
+  <div class="botones">
+
+    <button mat-flat-button color="primary"
+      *ngFor="let boton of bottons"
+      (click)="precionarBoton(boton)"
+     [ngClass]="{'clear':boton==='AC'}"
+     >
+    {{ boton }}
+    </button>
+
+  </div>
+</div>
