@@ -19,7 +19,7 @@ export class GenericService<T> {
   save(t:T){
     return this.http.post<T>(`${this.url}`, t);
   }
-  udate(id:number, t:T){
+  update(id:number, t:T){
     return this.http.put<T>(`${this.url}/${id}`, t);
   }
 
