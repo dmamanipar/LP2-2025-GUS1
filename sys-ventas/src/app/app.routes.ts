@@ -1,3 +1,8 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import {LayoutComponent} from './paginas/layout/layout.component';
+
+export const routes: Routes = [
+  { path: '', redirectTo:'main' , pathMatch: 'full' },
+  { path: 'main', component: LayoutComponent, },
+];
