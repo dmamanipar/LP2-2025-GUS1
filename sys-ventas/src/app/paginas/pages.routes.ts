@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatejemploComponent} from './matejemplo/matejemplo.component';
 
 export const pagesRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent,  },
+  { path: 'mattable', component: MatejemploComponent },
   /*{
     path: 'product',
     component: ListaProductoComponent,

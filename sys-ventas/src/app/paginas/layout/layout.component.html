@@ -46,6 +46,12 @@
         <mat-icon>scanner</mat-icon>
         <span>Carrito</span>
       </button>
+
+      <button class="myButton" mat-menu-item (click)="sidenav.toggle()"
+              routerLink="/pages/mattable" [routerLinkActive]="['active']" style="cursor: pointer">
+        <mat-icon>commute</mat-icon>
+        <span>Carrito</span>
+      </button>
        <!--
       <mat-divider></mat-divider>
       <button class="myButton" mat-menu-item (click)="sidenav.toggle()"
