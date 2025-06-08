@@ -20,6 +20,8 @@ export class MarcaService extends GenericService<Marca>{
 
   setEntidadChange(data: Marca[]) { this.entidadSubject.next(data);}
   getEntidadChange() { return this.entidadSubject.asObservable();}
+
   setMessageChange(data: string) { this.messageChange.next(data);}
+  getMessageChange() { return this.messageChange.asObservable();}
 
 }
