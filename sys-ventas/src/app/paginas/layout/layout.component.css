@@ -27,3 +27,16 @@
   box-shadow: none; /* Si tiene sombra, también la eliminamos */
   outline: none; /* Quita el borde al hacer focus */
 }
+
+
+.theme-menu-item{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.color-preview{
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
