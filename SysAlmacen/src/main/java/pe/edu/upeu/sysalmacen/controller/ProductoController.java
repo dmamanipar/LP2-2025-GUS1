@@ -18,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/productos")
-//@CrossOrigin("*")
+@CrossOrigin("*")
 public class ProductoController {
 
     private final IProductoService productoService;
@@ -54,9 +54,9 @@ public class ProductoController {
         return ResponseEntity.noContent().build();
     }
 
-    /*@GetMapping("/pageable")
+    @GetMapping("/pageable")
     public ResponseEntity<org.springframework.data.domain.Page<ProductoDTO>> listPage(Pageable pageable){
         Page<ProductoDTO> page = productoService.listaPage(pageable).map(e -> productoMapper.toDTO(e));
         return ResponseEntity.ok(page);
-    }*/
+    }
 }

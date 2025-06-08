@@ -3,6 +3,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatejemploComponent} from './matejemplo/matejemplo.component';
 import {MainMarcaComponent} from './main-marca/main-marca.component';
 import {FormMarcaComponent} from './main-marca/form-marca/form-marca.component';
+import {MainProductoComponent} from './main-producto/main-producto.component';
+import {FormxProductoComponent} from './main-producto/formx-producto/formx-producto.component';
 
 export const pagesRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent,  },
@@ -14,15 +16,16 @@ export const pagesRoutes: Routes = [
     ]
   },
 
-  /*{
+  {
     path: 'product',
-    component: ListaProductoComponent,
+    component: MainProductoComponent,
     children: [
-      { path: 'new', component: FormProductoComponent },
-      { path: 'edit/:id', component: FormProductoComponent },
+      { path: 'new', component: FormxProductoComponent },
+      { path: 'edit/:id', component: FormxProductoComponent },
     ],
   },
-  { path: 'categoria', component: MainCategoriaComponent , },
+
+  /*{ path: 'categoria', component: MainCategoriaComponent , },
   //{ path: 'categoria', component: MainCategoriaComponent },
   {
     path: 'marca',
