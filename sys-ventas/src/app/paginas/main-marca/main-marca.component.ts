@@ -9,6 +9,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {MaterialModule} from '../../material/material.module';
+import {switchMap} from 'rxjs';
 
 @Component({
   selector: 'app-main-marca',
@@ -36,9 +37,13 @@ export class MainMarcaComponent implements OnInit {
 
     ngOnInit(): void {
         this.marcaService.findAll().subscribe(data=>{
+         this.marcaService.setEntidadChange(data);
+        });
+        this.marcaService.getEntidadChange().subscribe(data=>{
           this.createTable(data);
         });
-
+        this.marcaService.getMessageChange()
+          .subscribe(data=>this._snackBar.open(data, 'INFO', {duration:2000}));
     }
 
     createTable(marca: Marca[]){
@@ -55,5 +60,13 @@ export class MainMarcaComponent implements OnInit {
     applyFilter(filter: any){
         this.dataSource.filter = filter.target.value.trim().toLowerCase();
     }
+
+  delete(id:number){
+    this.marcaService.delete(id).pipe(switchMap(()=>this.marcaService.findAll()))
+      .subscribe(res=>{
+        this.marcaService.setEntidadChange(res);
+        this.marcaService.setMessageChange('DELETED!');
+      });
+  }
 
 }
