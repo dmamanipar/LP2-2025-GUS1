@@ -1,7 +1,9 @@
 package pe.edu.upeu.sysalmacen.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upeu.sysalmacen.dtos.UsuarioDTO;
@@ -28,7 +30,8 @@ public class UsuarioServiceImp extends CrudGenericoServiceImp<Usuario, Long> imp
     private final IRolService rolService;
     private final IUsuarioRolService iurService;
 
-    //private final PasswordEncoder passwordEncoder; //descomenta al trabajar spring security
+    private final PasswordEncoder passwordEncoder; //descomenta al trabajar spring security
+
     private final UsuarioMapper userMapper;
 
     @Override
@@ -43,9 +46,9 @@ public class UsuarioServiceImp extends CrudGenericoServiceImp<Usuario, Long> imp
         Usuario user = repo.findOneByUser(credentialsDto.user())
                 .orElseThrow(() -> new ModelNotFoundException("Unknown user", HttpStatus.NOT_FOUND));
         //descomenta al trabajar spring security
-        /*if (passwordEncoder.matches(CharBuffer.wrap(credentialsDto.clave()), user.getClave())) {
+        if (passwordEncoder.matches(CharBuffer.wrap(credentialsDto.clave()), user.getClave())) {
             return userMapper.toDTO(user);
-        }*/
+        }
 
         if (credentialsDto.clave().equals(user.getClave())) {
             return userMapper.toDTO(user);
@@ -63,8 +66,8 @@ public class UsuarioServiceImp extends CrudGenericoServiceImp<Usuario, Long> imp
             throw new ModelNotFoundException("Login already exists", HttpStatus.BAD_REQUEST);
         }
         Usuario user = userMapper.toEntityFromCADTO(userDto);
-        //user.setClave(passwordEncoder.encode(CharBuffer.wrap(userDto.clave()))); //descomenta al trabajar spring security
-        user.setClave(userDto.clave().toString());
+        user.setClave(passwordEncoder.encode(CharBuffer.wrap(userDto.clave()))); //descomenta al trabajar spring security
+        //user.setClave(userDto.clave().toString());
         Usuario savedUser = repo.save(user);
         Rol r;
         switch (userDto.rol()){

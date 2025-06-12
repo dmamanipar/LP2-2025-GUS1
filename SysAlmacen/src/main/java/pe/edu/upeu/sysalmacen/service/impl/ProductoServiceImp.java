@@ -2,12 +2,15 @@ package pe.edu.upeu.sysalmacen.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import net.sf.jasperreports.engine.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upeu.sysalmacen.dtos.ProductoDTO;
+import pe.edu.upeu.sysalmacen.dtos.report.ProdMasVendidosDTO;
 import pe.edu.upeu.sysalmacen.mappers.ProductoMapper;
 import pe.edu.upeu.sysalmacen.model.Categoria;
 import pe.edu.upeu.sysalmacen.model.Marca;
@@ -17,6 +20,11 @@ import pe.edu.upeu.sysalmacen.repository.*;
 import pe.edu.upeu.sysalmacen.service.IProductoService;
 
 import javax.sql.DataSource;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
 
 @Service
 @Transactional
@@ -75,7 +83,7 @@ public class ProductoServiceImp extends CrudGenericoServiceImp<Producto, Long> i
         return productoMapper.toDTO(productoActualizado);
     }
 
-   /* public List<ProdMasVendidosDTO> obtenerProductosMasVendidos(){
+    public List<ProdMasVendidosDTO> obtenerProductosMasVendidos(){
         return repo.findProductosMasVendidos();
     }
 
@@ -94,7 +102,7 @@ public class ProductoServiceImp extends CrudGenericoServiceImp<Producto, Long> i
         // Exportar el informe a un byte[]
         return pdfBytes;
     }
-        */
+
     public Page<Producto> listaPage(Pageable pageable){
         return repo.findAll(pageable);
     }

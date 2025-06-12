@@ -22,7 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/marcas")
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class MarcaController {
     @Qualifier("marcaServiceA")
     private final IMarcaService marcaService;

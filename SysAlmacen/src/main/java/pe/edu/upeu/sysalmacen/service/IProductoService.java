@@ -1,9 +1,15 @@
 package pe.edu.upeu.sysalmacen.service;
 
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import pe.edu.upeu.sysalmacen.dtos.ProductoDTO;
+import pe.edu.upeu.sysalmacen.dtos.report.ProdMasVendidosDTO;
 import pe.edu.upeu.sysalmacen.model.Producto;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 
 public interface IProductoService extends ICrudGenericoService<Producto,
@@ -11,9 +17,9 @@ public interface IProductoService extends ICrudGenericoService<Producto,
     ProductoDTO saveD(ProductoDTO.ProductoCADto dto);
     ProductoDTO updateD(ProductoDTO.ProductoCADto dto, Long id);
 
-   /* public List<ProdMasVendidosDTO> obtenerProductosMasVendidos();
+    public List<ProdMasVendidosDTO> obtenerProductosMasVendidos();
 
     byte[] generateReport() throws JRException, SQLException, IOException;
-    */
+
     Page<Producto> listaPage(Pageable pageable);
 }
