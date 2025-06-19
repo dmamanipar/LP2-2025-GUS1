@@ -16,7 +16,7 @@ export interface Venta {
 
 export class VentaCA {
   constructor(
-  public idVenta: number,
+  public idVenta: number |null=null,
   public precioBase: number,
   public igv: number,
   public precioTotal: number,

@@ -15,7 +15,7 @@ export interface VentCarrito {
 
 export class VentCarritosCA{
   constructor(
-   public idCarrito: number,
+   public idCarrito: number|null=null,
    public dniruc: string,
    public producto: number,
    public nombreProducto: string,

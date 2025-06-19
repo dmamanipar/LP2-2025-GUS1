@@ -11,7 +11,8 @@ import {Marca} from '../modelo/Marca';
 })
 
 export class ProductoService extends GenericService<Producto>{
-  private productosSubject: Subject<ProductoReport[]> = new Subject<ProductoReport[]>;
+  //: Subject<ProductoReport[]> = new Subject<ProductoReport[]>;
+  private productosSubject= new BehaviorSubject<ProductoReport[]>([]);
 
   private productoSeleccionadoSubject = new BehaviorSubject<ProductoReport | null>(null);
   productoSeleccionado$ = this.productoSeleccionadoSubject.asObservable();
@@ -20,10 +21,8 @@ export class ProductoService extends GenericService<Producto>{
     super(http,`${environment.HOST}/productos`);
   }
 
-  findAllOT():void{
-    this.http.get<ProductoReport[]>(this.url).subscribe(data=>{
-      this.productosSubject.next(data);
-    });
+  findAllOT(){
+   return this.http.get<ProductoReport[]>(this.url);
   }
 
   findByIdOT(id:number){
